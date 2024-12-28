@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width,initial-scale=1.0">
+        <title>KyU SOFTWARE ENGINEERING DISCUSSION GROUP</title>
+        <style>
+            body{
+                font-family: Arial,sans-serif;
+                display: block;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin:0;
+                padding: 0;
+                background-color: floralwhite;
+            }
+            #login{
+            display: none;}
+            #content{
+            display: none;}
+            #login.show,#content.show{
+            display: block;}
+            .container{
+            text-align: center;}
+            .hidden{
+            display: none;}
+            header{
+                background-color: green;
+                color:white;
+                padding: 15px0;
+                text-align: center;
+            }
+            nav{
+                background-color: green;
+                color: white;
+                padding: 10px;
+                text-align: center;
+            }
+            nav a{
+                margin: 0 10px;
+                color:white;
+                text-decoration: none;
+            }
+            main{
+                padding: 20px;
+            }
+            section{
+                margin-bottom: 20px;
+            }
+            footer{
+                background-color: #343a40;
+                color: white;
+                text-align: center;
+                padding: 10px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+            .grid-container{
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: auto auto auto;
+                gap: 10px;
+                width: 100%;
+            }
+            .grid-container img {
+                width: 100%;
+                height: auto;
+            }
+            .item1{
+                grid-column: 1 / span 1;
+                grid-row: 1 / span 1;
+            }
+            .item2{
+                grid-column: 2 / span 1;
+                grid-row: 1 / span 1;
+            }
+            .item3{
+                grid-column: 1 / span 3;
+                grid-row: 2 / span 1;
+            }
+            .item4{
+                grid-column: 3 / span 1;
+                grid-row: 1 / span 1;
+            }
+            .item5{
+                grid-column: 1 / span 3;
+                grid-row: 3 / span 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="login" class="container show">
+            <h2>Password required</h2>
+            <input type="password" id="password" placeholder="enter password">
+            <button
+            onclick="validatePassword()">Submit</button>
+            <p id="error" class="hidden" style="color: red;">Incorrect password.Please try again.</p>
+        </div>
+        <div id="content" class="container">
+            <h1>WELCOME</h1>
+         <p>
+            <header>
+        
+                <h1>
+                    KyU SOFTWARE ENGINEERING DISCUSSION GROUP 
+                </h1>
+                <address> <p align="center" >P.0.BOX 143-IO3OO  KERUGOYA </address>
+                 <address> <p align="center"><strong> Tel:0742 481 717</strong></p></address>
+        <nav>
+            <section id="contact">
+                <p>
+                    Email:<a href="wachangapeter763@gmail.com"><Span style="color: yellow;">wachangapeter763@gmail.com</Span></a>
+                </p>
+            </section>
+                </header>
+                <div align=" left">
+                    <a href="http://www.tutorialspoint.com">Click to visit tutorialspoint website for simply easy learning</a>
+                </div>
+                <strong
+                </p></P>
+                <p>By the end of the four years,each individual should comfortably write in all of the major programming languages,for one to   have easier time traversing through the modern coding world.  </p>
+                <p> <span style="color: brown;"> <big> html , <span style="color: blue;">python</span> <span style="color: firebrick;">, java</span>  ,  <span style="color: aqua;"> C#</span></big> </style> </span> ,<span style="color: black;">CSS</span> </p>
+
+                
+             <div class="grid-container">
+                <div class="item1">
+              <a href="C:\Users\Peter\OneDrive\Documents\css_tutorial.pdf"download><span style="color: green;">Click here to download css tutorial</span></a>
+                <p></p>
+              <a href="c:\Users\Peter\OneDrive\Documents\CSSNotesForProfessionals.pdf"download><span style="color: red;">Click here to download </span><span style="color: darkmagenta;">CSSNotesForProfessionals</span></a>
+              <img src="C:\Users\Peter\OneDrive\Pictures\Camera Roll\Screenshot_2024-12-27-15-50-13-589_pdf.reader.pdfviewer.pdfeditor.jpg"class="my-image"align="left">
+            </div>
+             
+            <div class="item2">
+              <a href= "C:\Users\Peter\OneDrive\Documents\python_tutorial.pdf"download><span style="color: green;">Click here to download python tutorial</span></a>
+            <img src="C:\Users\Peter\OneDrive\Pictures\Camera Roll\Screenshot_2024-12-27-15-49-32-020_pdf.reader.pdfviewer.pdfeditor.jpg"class="my-image">
+        </div>
+             
+        <div class="item3">
+             <a href="C:\Users\Peter\OneDrive\Documents\java_tutorial.pdf"download><span style="color: green;">Click here to download java  tutorial</span></a>
+             <img src="C:\Users\Peter\OneDrive\Pictures\Camera Roll\Screenshot_2024-12-27-15-49-53-725_pdf.reader.pdfviewer.pdfeditor.jpg"class="my-image">
+            </div>
+             
+            <div class="item4">
+             <a href= "C:\Users\Peter\OneDrive\Documents\html_tutorial.pdf"download><span style="color: green;">Click here to download HTML tutorial</span></a>
+             <p></p>
+             <a href="c:\Users\Peter\OneDrive\Documents\HTML5NotesForProfessionals.pdf"download><span style="color: red;">Click here to download </span><span style="color: darkmagenta;">HTML5NotesForProfessionals</span></a>
+             <img src="C:\Users\Peter\OneDrive\Pictures\Camera Roll\Screenshot_2024-12-27-15-50-34-116_pdf.reader.pdfviewer.pdfeditor.jpg"class="my-image">
+            </div>
+             
+             <div class="item5"><img src="C:\Users\Peter\OneDrive\Pictures\Camera Roll\Screenshot_2024-12-27-15-55-45-649_com.miui.gallery.jpg"class="my-image" ></div>
+             
+                <nav>
+                    <a href="#about">About</a>
+                </nav>
+                <main>
+                    <section id="about">
+                        <p>
+                    This group was formed with two key  purposes </p>
+                   <p> 1: <span style="color: blue;"><u>"LEAVING  <span style="color: maroon;">NO</span>  INDIVIDUAL BEHIND !"</u></span> </p>
+                   <p> 2:<span style="color: red;">'TEAM WORK'</span> is very vital for the thrival of this group </p>
+                    </section>
+                </main>
+                <footer>
+                    <p>
+                        &copy;2024 KyUdiscussiongroup
+                    </p>
+                </footer>
+                
+         </p>   
+        </div>
+
+        <script>
+            const correctPassword="4L3JUP3V1";//Change this to your desired password
+            function validatePassword(){
+                const passwordinput=document.getElementById('password').value;
+                const loginDiv=document.getElementById('login');
+                const contentDiv=document.getElementById('content');
+                const errorMsg=document.getElementById('error');
+
+                if (passwordinput===correctPassword){
+                    loginDiv.classList.remove('show');
+                    contentDiv.classList.add('show');
+                }else{
+                    errorMsg.classList.remove(hidden);
+                }
+            }
+        </script>
+        <header>
+        
+    </body>
+</html>

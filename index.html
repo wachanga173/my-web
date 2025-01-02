@@ -32,7 +32,7 @@
             .marquee span{
                 display:inline-block;
                 padding-left:100%;
-                animation:marquee 5s linear infinite;
+                animation:marquee 10s linear infinite;
             }
             @keyframes marquee {
                 0%{
@@ -116,21 +116,25 @@
                 grid-row: 5 / span 1;
             }
         </style>
+        <script>
+            function revealPasswordInput(){
+                document.querySelector('.password-container').style.visibility='visible';
+            }
+        </script>
     </head>
     <body>
         
         <div id="login" class="container show">
-            <img src="1735841054655.jpg" class="avatar">
             <h2>Password required</h2>
             <input type="password" id="password" placeholder="enter your password">
+             <img src="1735841054655.jpg" class="avatar">
             <button
             onclick="validatePassword()">Submit</button>
-            <p id="error" class="hidden" style="color: red;">Incorrect password.Please try again.</p>
         </div>
         <div id="content" class="container">
             <h1>
                 <div class="marquee">
-                    <span>WELCOME TO THIS DISCUSSION GROUP !!!</span>
+                    <span>WELCOME TO THIS DISCUSSION GROUP </span>
                 </div>
             </h1>
          <p>

@@ -15,8 +15,14 @@
                 margin:0;
                 padding: 0;
                 background-color: floralwhite;
-                
-                
+            }
+            .avatar{
+            width:150px;
+                height:150px;
+                border:5px solid #007bff;
+                border-radius:70%;
+                padding:10px;
+                box-shadow:0 0 10px rgba(0, 0, 0, 0.1);
             }
             
             .marquee{
@@ -125,9 +131,9 @@
     <body>
         
         <div id="login" class="container show">
+             <img src="1735841054655.jpg" class="avatar">
             <h2>Password required</h2>
             <input type="password" id="password" placeholder="enter your password">
-             <img src="1735841054655.jpg" class="avatar">
             <button
             onclick="validatePassword()">Submit</button>
         </div>

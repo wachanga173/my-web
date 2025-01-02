@@ -16,6 +16,27 @@
                 padding: 0;
                 background-color: floralwhite;
             }
+            .marquee{
+                display: block;
+                width:100%;
+                height:50px;
+                line-height:50px;
+                background-color:red;
+                color:white;
+                font-size:24px;
+                font-weight:bold;
+                posititon:absolute;
+                white-space:nowrap;
+                animation:marquee 10s linear infinite;
+            }
+            @keyframes marquee {
+                from{
+                    left:100%;
+                }
+                to{
+                    left:-100%;
+                }
+            }
             #login{
             display: none;}
             #content{
@@ -92,6 +113,7 @@
         </style>
     </head>
     <body>
+        
         <div id="login" class="container show">
             <h2>Password required</h2>
             <input type="password" id="password" placeholder="enter password">
@@ -100,7 +122,9 @@
             <p id="error" class="hidden" style="color: red;">Incorrect password.Please try again.</p>
         </div>
         <div id="content" class="container">
-            <h1>WELCOME</h1>
+            <h1>
+                <div class="marquee">WELCOME TO THIS DISCUSSION GROUP </div>
+            </h1>
          <p>
             <header>
         

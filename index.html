@@ -1,273 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        
-        <meta charset="UTF-8">  
-        <meta name="viewpoint" content="width=device-width,initial-scale=1.0">
-        <meta name="description" content="KyU SOFTWARE DISCUSSION GROUP" />
-        <title>KyU SOFTWARE ENGINEERING DISCUSSION GROUP</title>
-        <style>
-             /* Enhanced Aura Effects */
-        @keyframes auraPulse {
-            0% { box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
-            50% { box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00; }
-            100% { box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00; }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KyU SE 2025 AURA EDITION</title>
+    <style>
+        :root {
+            --neon-green: #00ffaa;
+            --matrix-bg: #001122;
+            --cyber-purple: #bc13fe;
         }
 
-        .avatar {
-            /* Enhanced aura effect */
-            animation: auraPulse 1.5s infinite, fadeIn 2s ease-in-out;
+        body {
+            font-family: 'Segoe UI', system-ui;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, var(--matrix-bg), #000);
+            color: #fff;
+            overflow-x: hidden;
         }
-            @keyframes fadeIn{
-                0% { opacity:0;}
-                100%{opacity:1;}
-            }
-            body{
-                font-family: Arial,sans-serif;
-                display: block;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin:0;
-                padding: 0;
-                background-color: floralwhite;
-                background-image:url('1737393733986.jpeg');
-                background-size:cover;
-                background-position:center;
-                animation:fadeIn 2s ease-in-out;
-            }
-            .avatar{
-            width:170px;
-                height:150px;
-                border:5px solid #007bff;
-                border-radius:50%;
-                padding:10px;
-                box-shadow:0 0 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            .marquee{
-                width:100%;
-                height:50px;
-                line-height:50px;
-                background-color:red;
-                white-space:nowrap;
-                overflow:hidden;
-                box-sizing:border-box;
-                
-            }
-            .marquee span{
-                display:inline-block;
-                padding-left:100%;
-                animation:marquee 20s linear infinite;
-            }
-            @keyframes marquee {
-                0%{
-                    transform:translateX(100%);
-                }
-                100%{
-                    transform:translateX(-100%);
-                }
-            }
-            #login{
-            display: none;}
-            #content{
-            display: none;}
-            #login.show,#content.show{
+
+        #cyber-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        @keyframes hyperAura {
+            0% { filter: drop-shadow(0 0 10px var(--neon-green)); }
+            50% { filter: drop-shadow(0 0 30px var(--neon-green)); }
+            100% { filter: drop-shadow(0 0 10px var(--neon-green)); }
+        }
+
+        .cyber-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(0.9);
+            padding: 2rem;
+        }
+        .hidden{
+            display: none;
+        }
+
+        .cyber-active {
+            display: flex !important;
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cyber-nav {
+            display: none;
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 2rem;
+            z-index: 1000;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cyber-nav button {
+            background: rgba(0, 255, 170, 0.1);
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+
+        .cyber-nav button:hover {
+            background: rgba(0, 255, 170, 0.3);
+            transform: translateX(-10px);
+        }
+        #cyber-login {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        #content{
+            display: none;
+        }
+        #cyber-login.show,#content.show{
             display: block;
-            animation:fadeIn 2s ease-in-out;
-            }
-            .container{
-            text-align: center;}
-            .hidden{
-            display: none;}
-            header{
-                background-color: green;
-                color:white;
-                padding: 15px0;
-                text-align: center;
-                animation:fadeIn 2s ease-in-out;
-            }
-            nav{
-                background-color: green;
-                color: white;
-                padding: 10px;
-                text-align: center;
-                animation:fadeIn 2s ease-in-out;
-            }
-            nav a{
-                margin: 0 10px;
-                color:white;
-                text-decoration: none;
-            }
-            main{
-                padding: 20px;
-                animation:fadeIn 2s ease-in-out;
-            }
-            section{
-                margin-bottom: 20px;
-            }
-            footer{
-                background-color: #343a40;
-                color: white;
-                text-align: center;
-                padding: 10px;
-                position: fixed;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .cyber-avatar {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            animation: hyperAura 2s infinite;
+            margin-bottom: 2rem;
+            border: 3px solid var(--neon-green);
+        }
+
+        .cyber-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        .neon-text {
+            font-size: 3rem;
+            animation: neonPulse 1s infinite alternate;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        @keyframes neonPulse {
+            from { text-shadow: 0 0 10px var(--neon-green); }
+            to { text-shadow: 0 0 30px var(--neon-green); }
+        }
+
+        .cyber-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--neon-green);
+            padding: 2rem;
+            margin: 2rem;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+            clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%);
+            transition: all 0.3s ease;
+        }
+
+        .cyber-card:hover {
+            transform: perspective(1000px) rotateY(5deg);
+            box-shadow: 0 0 50px rgba(0, 255, 170, 0.2);
+        }
+
+        .download-btn {
+            background: var(--neon-green);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 1rem;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+        }
+
+        .language-img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            margin: 2rem;
+            border: 2px solid var(--neon-green);
+            animation: hyperAura 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .cyber-nav {
                 bottom: 0;
+                top: auto;
+                flex-direction: row;
+                justify-content: center;
                 width: 100%;
+                right: 0;
+                padding: 1rem;
+                background: rgba(0, 0, 0, 0.9);
             }
-            .grid-container{
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: auto auto auto;
-                gap: 10px;
-                width: 100%;
-            }
-            .grid-container img {
-                width: 100%;
-                height: auto;
-                animation:fadeIn 2s ease-in-out;
-            }
-            .item1{
-                grid-column: 1 / span 3;
-                grid-row: 1 / span 1;
-            }
-            .item2{
-                grid-column: 1 / span 3;
-                grid-row: 2 / span 1;
-            }
-            .item3{
-                grid-column: 1 / span 3;
-                grid-row: 3 / span 1;
-            }
-            .item4{
-                grid-column: 1 / span 3;
-                grid-row: 4 / span 1;
-            }
-            .item5{
-                grid-column: 1 / span 3;
-                grid-row: 5 / span 1;
-            }
-            @keyframes slideIn {
-                0% {transform:translateX(-1oo%);}
-                100%{transform:translateX(0):}
-            }
-            nav a {
-                display:inline-block;
-                animation:slideIn 0.5s ease-in-out;
-            }
-        </style>
-        <script>
-            function revealPasswordInput(){
-                document.querySelector('.password-container').style.visibility='visible';
-            }
-        </script>
-    </head>
-    <body>
-        
-        <div id="login" class="container show">
-             <img src="1735841054655.jpg" class="avatar">
-            <h2>Password required</h2>
-            <input type="password" id="password" placeholder="enter your password">
-            <button
-            onclick="validatePassword()">Submit</button>
-        </div>
-        <div id="content" class="container">
-            <h1>
-                <div class="marquee">
-                    <span>WELCOME TO THIS DISCUSSION GROUP </span>
-                </div>
-            </h1>
-         <p>
-            <header>
-        
-                <h1>
-                    KyU SOFTWARE ENGINEERING DISCUSSION GROUP 
-                </h1>
-                <address> <p align="center" >P.0.BOX 143-IO3OO  KERUGOYA </address>
-                 <address> <p align="center"><strong> Tel:0742 481 717</strong></p></address>
-        <nav>
-            <section id="contact">
-                <p>
-                    Email:<a href="wachangapeter763@gmail.com"><Span style="color: yellow;">wachangapeter763@gmail.com</Span></a>
-                </p>
-            </section>
-                </header>
-                <div align=" left">
-                    <a href="http://www.tutorialspoint.com">Click to visit tutorialspoint website for simply easy learning</a>
-                </div>
-                <strong
-                </p></P>
-                <p style="color:#FFF0F5;">In this page , I have taken key interest in web technologies.Understanding these particular languages that I have listed below is very vital in this field . The links provided below will be of great importance in learning those programming languages. </p>
-                <p> <span style="color: brown;"> <big> html , <span style="color: blue;">python</span> <span style="color: firebrick;">, java</span>  ,  <span style="color: aqua;"> C#</span></big> </style> </span> ,<span style="color: white;">CSS</span> </p>
 
-                
-             <div class="grid-container">
-                <div class="item1">
-              <a href="https://www.tutorialspoint.com/css/css_tutorial.pdf"download><span style="color: green;">Click here to download css tutorial</span></a>
-                <p></p>
-              <a href="https://books.goalkicker.com/CSSBook/"download><span style="color: red;">Click here to download </span><span style="color: darkmagenta;">CSSNotesForProfessionals</span></a>
-              <img src="Screenshot_2024-12-27-15-50-13-589_pdf.reader.pdfviewer.pdfeditor.jpg"class="my-image"align="left">
-            </div>
-             
-            <div class="item2">
-              <a href= "https://www.tutorialspoint.com/python/python_tutorial.pdf"download><span style="color: green;">Click here to download python tutorial</span></a>
-                <p></p>
-                <a href="https://books.goalkicker.com/PythonBook/" download><span style="color: red;">Click here to download </span><span style="color: darkmagenta;">PythonNotesForProfessionals</span></a>
-            <img src="Screenshot_2024-12-27-15-49-32-020_pdf.reader.pdfviewer.pdfeditor.jpg"class="my-image">
-        </div>
-             
-        <div class="item3">
-             <a href="https://www.tutorialspoint.com/java/java_tutorial.pdf"download><span style="color: green;">Click here to download java  tutorial</span></a>
-            <p></p>
-             <a href="https://books.goalkicker.com/JavaBook/" download><span style="color: red;">Click here to download </span><span style="color: darkmagenta;">JavaNotesForProfessionals</span></a>
-             <img src="Screenshot_2024-12-27-15-49-53-725_pdf.reader.pdfviewer.pdfeditor.jpg"class="my-image">
-            </div>
-             
-            <div class="item4">
-             <a href= "https://www.tutorialspoint.com/html/html_pdf_version.htm"download><span style="color: green;">Click here to download HTML tutorial</span></a>
-             <p></p>
-             <a href="https://books.goalkicker.com/HTMLBook/" download><span style="color: red;">Click here to download </span><span style="color: darkmagenta;">HTML5NotesForProfessionals</span></a>
-             <img src="Screenshot_2024-12-27-15-50-34-116_pdf.reader.pdfviewer.pdfeditor.jpg"class="my-image">
-            </div>
-             
-             <div class="item5"><img src="Screenshot_2024-12-27-15-55-45-649_com.miui.gallery.jpg"class="my-image" ></div>
-             
-                <nav>
-                    <a href="#about">About</a>
-                </nav>
-                <main>
-                    <section id="about">
-                        <p> <span style="color:white;">This group was formed with two key  purposes</span> </p>
-                   <p>  <span style="color: blue;">1: "LEAVING  <span style="color: maroon;">NO</span>  INDIVIDUAL BEHIND !"</u></span> </p>
-                   <p> <span style="color: red;">2: 'TEAM WORK'</span><span style="color:white;"> is very vital for the thrival of this group</span> </p>
-                    </section>
-                </main>
-                <footer>
-                    <p>
-                        &copy;2024 KyUdiscussiongroup
-                    </p>
-                </footer>
-                
-         </p>   
-        </div>
+            .cyber-nav button {
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+            }
 
-        <script>
-            const correctPassword="4L3JUP3V1";//Change this to your desired password
-            function validatePassword(){
-                const passwordinput=document.getElementById('password').value;
-                const loginDiv=document.getElementById('login');
-                const contentDiv=document.getElementById('content');
-                const errorMsg=document.getElementById('error');
+            .neon-text {
+                font-size: 2rem;
+                text-align: center;
+            }
 
-                if (passwordinput===correctPassword){
-                    loginDiv.classList.remove('show');
-                    contentDiv.classList.add('show');
-                }else{
-                    errorMsg.classList.remove(hidden);
+            .cyber-card {
+                margin: 1rem;
+                padding: 1rem;
+            }
+        }
+        .download-section {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .download-link {
+            display: block;
+            padding: 0.8rem;
+            background: rgba(0, 255, 170, 0.1);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .download-link:hover {
+            background: rgba(0, 255, 170, 0.3);
+            transform: translateX(10px);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="cyber-canvas"></canvas>
+
+    <!-- Password Screen -->
+    <div id="cyber-login" class="cyber-container show cyber-active">
+        <img src="image (5).jpg" class="cyber-avatar">
+        <h2 class="neon-text">AUTHENTICATION REQUIRED</h2>
+        <input type="password" id="cyber-password" class="cyber-input" placeholder="ENTER SE KEY">
+        <button class="download-btn" onclick="validateCyberPassword()">INITIALIZE SYSTEM</button>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="cyber-loading">
+        <h1 class="neon-text">INITIALIZING AURA MATRIX</h1>
+    </div>
+
+    <!-- Navigation -->
+    <div class="cyber-nav">
+        <button onclick="showSlide('css')">CSS AURA</button>
+        <button onclick="showSlide('html')">HTML5 NEO</button>
+        <button onclick="showSlide('java')">JAVA CORE</button>
+        <button onclick="showSlide('python')">PYTHON NEXUS</button>
+    </div>
+
+    <!-- Language Slides -->
+    <div id="css" class="cyber-container">
+        <div class="cyber-card">
+            <h2 class="neon-text">CSS AURA 2025</h2>
+            <img src="image (2).jpg" class="language-img">
+            <div class="download-section">
+                <a href="https://www.tutorialspoint.com/css/css_tutorial.pdf" 
+                   class="download-link"
+                   target="_blank"
+                   download="CSS-Tutorial.pdf">
+                   Download CSS Tutorial (PDF)
+                </a>
+                <a href="https://books.goalkicker.com/CSSBook/CSSNotesForProfessionals.pdf" 
+                   class="download-link"
+                   target="_blank"
+                   download="CSS-Notes.pdf">
+                   CSS Professional Notes (PDF)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="html" class="cyber-container">
+        <div class="cyber-card">
+            <h2 class="neon-text">HTML5 NEO EDITION</h2>
+            <img src="image (3).jpg " class="language-img">
+            <div class="download-section">
+                <a href="https://www.tutorialspoint.com/html5/pdf/html5_tutorial.pdf" 
+                   class="download-link"
+                   target="_blank"
+                   download="HTML5-Tutorial.pdf">
+                   HTML5 Tutorial (PDF)
+                </a>
+                <a href="https://books.goalkicker.com/HTML5Book/HTML5NotesForProfessionals.pdf" 
+                   class="download-link"
+                   target="_blank"
+                   download="HTML5-Notes.pdf">
+                   HTML5 Professional Notes (PDF)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="java" class="cyber-container">
+        <div class="cyber-card">
+            <h2 class="neon-text">JAVA QUANTUM CORE</h2>
+            <img src="image (4).jpg" class="language-img">
+            <div class="download-section">
+                <a href="https://www.tutorialspoint.com/java/java_tutorial.pdf" 
+                   class="download-link"
+                   target="_blank"
+                   download="Java-Tutorial.pdf">
+                   Java Tutorial (PDF)
+                </a>
+                <a href="https://books.goalkicker.com/JavaBook/JavaNotesForProfessionals.pdf" 
+                   class="download-link"
+                   target="_blank"
+                   download="Java-Notes.pdf">
+                   Java Professional Notes (PDF)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="python" class="cyber-container">
+        <div class="cyber-card">
+            <h2 class="neon-text">PYTHON NEXUS AI</h2>
+            <img src="image.jpg" class="language-img">
+            <div class="download-section">
+                <a href="https://www.tutorialspoint.com/python/python_tutorial.pdf" 
+                   class="download-link"
+                   target="_blank"
+                   download="Python-Tutorial.pdf">
+                   Python Tutorial (PDF)
+                </a>
+                <a href="https://books.goalkicker.com/PythonBook/PythonNotesForProfessionals.pdf" 
+                   class="download-link"
+                   target="_blank"
+                   download="Python-Notes.pdf">
+                   Python Professional Notes (PDF)
+                </a>
+                <a href="https://github.com/kyu-software/AI-Resources/archive/refs/heads/main.zip" 
+                   class="download-link"
+                   download="AI-Resources.zip">
+                   AI Development Kit (ZIP)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CYBER_PASSWORD = "4L3JUP3V1";
+        let currentSlide = null;
+        let touchStartX = 0;
+
+        function initParticles() {
+            const canvas = document.getElementById('cyber-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.vx = (Math.random() - 0.5) * 2;
+                    this.vy = (Math.random() - 0.5) * 2;
+                    this.alpha = Math.random() * 0.5 + 0.5;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                        this.reset();
+                    }
+                }
+
+                draw() {
+                    ctx.fillStyle = `rgba(0, 255, 170, ${this.alpha})`;
+                    ctx.fillRect(this.x, this.y, 2, 2);
                 }
             }
-        </script>
-        <header>
-        
-    </body>
+
+            const particles = Array.from({ length: 1000 }, () => new Particle());
+
+            function animate() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        function validateCyberPassword() {
+            const input = document.getElementById('cyber-password').value;
+            if(input === CYBER_PASSWORD) {
+                document.getElementById('cyber-login').style.display = 'none';
+                document.querySelector('.cyber-loading').style.display = 'flex';
+                
+                setTimeout(() => {
+                    document.querySelector('.cyber-loading').style.display = 'none';
+                    document.querySelector('.cyber-nav').style.display = 'flex';
+                    showSlide('css');
+                    initParticles();
+                }, 3000);
+            } else {
+                alert('Invalid access code!');
+            }
+        }
+
+        function showSlide(slideId) {
+            if (currentSlide) {
+                const prevSlide = document.getElementById(currentSlide);
+                prevSlide.classList.remove('cyber-active');
+                prevSlide.style.display = 'none';
+            }
+
+            const newSlide = document.getElementById(slideId);
+            newSlide.style.display = 'flex';
+            void newSlide.offsetWidth;
+            newSlide.classList.add('cyber-active');
+            currentSlide = slideId;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.cyber-container').forEach(el => {
+                if(el.id !== 'cyber-login') el.style.display = 'none';
+            });
+        });
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diffX = touchStartX - touchEndX;
+            const slides = ['css', 'html', 'java', 'python'];
+            const currentIndex = slides.indexOf(currentSlide);
+
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0 && currentIndex < slides.length - 1) {
+                    showSlide(slides[currentIndex + 1]);
+                } else if (diffX < 0 && currentIndex > 0) {
+                    showSlide(slides[currentIndex - 1]);
+                }
+            }
+        });
+
+            // Update download function
+            function downloadResource(type) {
+            const resources = {
+                css: {
+                    tutorial: "https://www.tutorialspoint.com/css/css_tutorial.pdf",
+                    notes: "https://books.goalkicker.com/CSSBook/CSSNotesForProfessionals.pdf"
+                },
+                html: {
+                    tutorial: "https://www.tutorialspoint.com/html5/pdf/html5_tutorial.pdf",
+                    notes: "https://books.goalkicker.com/HTML5Book/HTML5NotesForProfessionals.pdf"
+                },
+                java: {
+                    tutorial: "https://www.tutorialspoint.com/java/java_tutorial.pdf",
+                    notes: "https://books.goalkicker.com/JavaBook/JavaNotesForProfessionals.pdf"
+                },
+                python: {
+                    tutorial: "https://www.tutorialspoint.com/python/python_tutorial.pdf",
+                    notes: "https://books.goalkicker.com/PythonBook/PythonNotesForProfessionals.pdf",
+                    ai: "https://github.com/kyu-software/AI-Resources/archive/main.zip"
+                }
+            };
+
+            return {
+                openTutorial: (lang) => window.open(resources[lang].tutorial, '_blank'),
+                openNotes: (lang) => window.open(resources[lang].notes, '_blank'),
+                openAI: () => window.open(resources.python.ai, '_blank')
+            };
+        }
+
+        window.addEventListener('resize', () => {
+            const canvas = document.getElementById('cyber-canvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
 </html>

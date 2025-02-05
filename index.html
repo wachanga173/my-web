@@ -10,10 +10,6 @@
             --matrix-bg: #001122;
             --cyber-purple: #bc13fe;
         }
-        grid-container(
-            padding-bottom:80px;
-        }
-
         body {
             font-family: 'Segoe UI', system-ui;
             margin: 0;
@@ -47,9 +43,6 @@
             transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
             transform: scale(0.9);
             padding: 2rem;
-        }
-        .hidden{
-            display: none;
         }
 
         .cyber-active {
@@ -87,6 +80,7 @@
             background: rgba(0, 255, 170, 0.3);
             transform: translateX(-10px);
         }
+
         #cyber-login {
             display: none;
             flex-direction: column;
@@ -95,13 +89,6 @@
             height: 100vh;
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
-        }
-        #content{
-            display: none;
-        }
-        #cyber-login.show,#content.show{
-            display: block;
-            animation: fadeIn 2s ease-out;
         }
 
         .cyber-avatar {
@@ -132,11 +119,12 @@
             animation: neonPulse 1s infinite alternate;
             text-transform: uppercase;
             letter-spacing: 4px;
+            text-align: center;
         }
 
         @keyframes neonPulse {
             from { text-shadow: 0 0 10px var(--neon-green); }
-            to { text-shadow: 0 0 30px var(--neon-green); }
+            to { text-shadow: 0 0 30px var(--neon-green), 0 0 10px var(--cyber-purple); }
         }
 
         .cyber-card {
@@ -148,6 +136,7 @@
             backdrop-filter: blur(10px);
             clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%);
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .cyber-card:hover {
@@ -175,7 +164,34 @@
             border: 2px solid var(--neon-green);
             animation: hyperAura 2s infinite;
         }
-        
+
+        .cyber-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .contacts {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--neon-green);
+        }
+
+        .copyright {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
 
         @media (max-width: 768px) {
             .cyber-nav {
@@ -196,36 +212,25 @@
 
             .neon-text {
                 font-size: 2rem;
-                text-align: center;
             }
 
             .cyber-card {
-                min-height:400px;
-                display:flex;
-                flex-duration:column;
                 margin: 1rem;
                 padding: 1rem;
+                min-height: 70vh;
+                margin-bottom: 100px;
             }
-        }
-        .download-section {
-            margin-top: 2rem;
-            display: grid;
-            gap: 1rem;
-        }
 
-        .download-link {
-            display: block;
-            padding: 0.8rem;
-            background: rgba(0, 255, 170, 0.1);
-            border: 1px solid var(--neon-green);
-            color: var(--neon-green);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+            .language-img {
+                width: 200px;
+                height: 150px;
+            }
 
-        .download-link:hover {
-            background: rgba(0, 255, 170, 0.3);
-            transform: translateX(10px);
+            .copyright {
+                position: static;
+                text-align: center;
+                margin-top: 2rem;
+            }
         }
     </style>
 </head>
@@ -247,10 +252,45 @@
 
     <!-- Navigation -->
     <div class="cyber-nav">
-        <button  onclick="showSlide('css')">CSS AURA</button>
-        <button   onclick="showSlide('html')">HTML5 NEO</button>
-        <button   onclick="showSlide('java')">JAVA CORE</button>
-        <button   onclick="showSlide('python')">PYTHON NEXUS</button>
+        <button onclick="showSlide('about')">ABOUT KyU SE GROUP</button>
+        <button onclick="showSlide('css')">CSS AURA</button>
+        <button onclick="showSlide('html')">HTML5 NEO</button>
+        <button onclick="showSlide('java')">JAVA CORE</button>
+        <button onclick="showSlide('python')">PYTHON NEXUS</button>
+    </div>
+
+    <!-- About Slide -->
+    <div id="about" class="cyber-container">
+        <div class="cyber-card">
+            <h2 class="neon-text">CYBER AURA 2025</h2>
+            <p class="cyber-description">
+                Welcome to the KyU Software Engineering AURA Matrix - Your gateway to cybernetic learning.<br>
+                This neural interface contains classified programming knowledge from the 2025 KyU SE archives.<br>
+                Access restricted materials through the quantum navigation panel.
+            </p>
+            <div class="contacts">
+                <div class="contact-item">
+                    <span>█▓▒░ ENCRYPTED CHANNEL ░▒▓█</span>
+                </div>
+                <div class="contact-item">
+                    <span>➤ Neural Link:</span>
+                    <span>wachangapeter763@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>➤ Quantum Frequency:</span>
+                    <span>+254 74248-1717</span>
+                </div>
+            </div>
+            <div class="copyright">
+                ░█████╗░██╗░░░██╗██████╗░██╗░░██╗<br>
+                ██╔══██╗╚██╗░██╔╝██╔══██╗██║░██╔╝<br>
+                ███████║░╚████╔╝░██████╔╝█████═╝░<br>
+                ██╔══██║░░╚██╔╝░░██╔══██╗██╔═██╗░<br>
+                ██║░░██║░░░██║░░░██║░░██║██║░╚██╗<br>
+                ╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝<br>
+                © 2025 KyU AURA EDITION - ALL RIGHTS TERMINATED
+            </div>
+        </div>
     </div>
 
     <!-- Language Slides -->
@@ -259,13 +299,13 @@
             <h2 class="neon-text">CSS AURA 2025</h2>
             <img src="image (2).jpg" class="language-img">
             <div class="download-section">
-                <a href="https://www.tutorialspoint.com/css/css_tutorial.pdf" 
+                <a href="https://www.tutorialspoint.com/css/css_tutorial.pdf"
                    class="download-link"
                    target="_blank"
                    download="CSS-Tutorial.pdf">
                    Download CSS Tutorial (PDF)
                 </a>
-                <a href="https://books.goalkicker.com/CSSBook/CSSNotesForProfessionals.pdf" 
+                <a href="https://books.goalkicker.com/CSSBook/CSSNotesForProfessionals.pdf"
                    class="download-link"
                    target="_blank"
                    download="CSS-Notes.pdf">
@@ -278,15 +318,15 @@
     <div id="html" class="cyber-container">
         <div class="cyber-card">
             <h2 class="neon-text">HTML5 NEO EDITION</h2>
-            <img src="image (3).jpg " class="language-img">
+            <img src="image (3).jpg" class="language-img">
             <div class="download-section">
-                <a href="https://www.tutorialspoint.com/html5/pdf/html5_tutorial.pdf" 
+                <a href="https://www.tutorialspoint.com/html5/pdf/html5_tutorial.pdf"
                    class="download-link"
                    target="_blank"
                    download="HTML5-Tutorial.pdf">
                    HTML5 Tutorial (PDF)
                 </a>
-                <a href="https://books.goalkicker.com/HTML5Book/HTML5NotesForProfessionals.pdf" 
+                <a href="https://books.goalkicker.com/HTML5Book/HTML5NotesForProfessionals.pdf"
                    class="download-link"
                    target="_blank"
                    download="HTML5-Notes.pdf">
@@ -301,13 +341,13 @@
             <h2 class="neon-text">JAVA QUANTUM CORE</h2>
             <img src="image (4).jpg" class="language-img">
             <div class="download-section">
-                <a href="https://www.tutorialspoint.com/java/java_tutorial.pdf" 
+                <a href="https://www.tutorialspoint.com/java/java_tutorial.pdf"
                    class="download-link"
                    target="_blank"
                    download="Java-Tutorial.pdf">
                    Java Tutorial (PDF)
                 </a>
-                <a href="https://books.goalkicker.com/JavaBook/JavaNotesForProfessionals.pdf" 
+                <a href="https://books.goalkicker.com/JavaBook/JavaNotesForProfessionals.pdf"
                    class="download-link"
                    target="_blank"
                    download="Java-Notes.pdf">
@@ -322,19 +362,19 @@
             <h2 class="neon-text">PYTHON NEXUS AI</h2>
             <img src="image.jpg" class="language-img">
             <div class="download-section">
-                <a href="https://www.tutorialspoint.com/python/python_tutorial.pdf" 
+                <a href="https://www.tutorialspoint.com/python/python_tutorial.pdf"
                    class="download-link"
                    target="_blank"
                    download="Python-Tutorial.pdf">
                    Python Tutorial (PDF)
                 </a>
-                <a href="https://books.goalkicker.com/PythonBook/PythonNotesForProfessionals.pdf" 
+                <a href="https://books.goalkicker.com/PythonBook/PythonNotesForProfessionals.pdf"
                    class="download-link"
                    target="_blank"
                    download="Python-Notes.pdf">
                    Python Professional Notes (PDF)
                 </a>
-                <a href="https://github.com/kyu-software/AI-Resources/archive/refs/heads/main.zip" 
+                <a href="https://github.com/kyu-software/AI-Resources/archive/refs/heads/main.zip"
                    class="download-link"
                    download="AI-Resources.zip">
                    AI Development Kit (ZIP)
@@ -400,11 +440,11 @@
             if(input === CYBER_PASSWORD) {
                 document.getElementById('cyber-login').style.display = 'none';
                 document.querySelector('.cyber-loading').style.display = 'flex';
-                
+               
                 setTimeout(() => {
                     document.querySelector('.cyber-loading').style.display = 'none';
                     document.querySelector('.cyber-nav').style.display = 'flex';
-                    showSlide('css');
+                    showSlide('about');
                     initParticles();
                 }, 3000);
             } else {
@@ -439,7 +479,7 @@
         document.addEventListener('touchend', e => {
             const touchEndX = e.changedTouches[0].clientX;
             const diffX = touchStartX - touchEndX;
-            const slides = ['css', 'html', 'java', 'python'];
+            const slides = ['about', 'css', 'html', 'java', 'python'];
             const currentIndex = slides.indexOf(currentSlide);
 
             if (Math.abs(diffX) > 50) {
@@ -451,35 +491,6 @@
             }
         });
 
-            // Update download function
-            function downloadResource(type) {
-            const resources = {
-                css: {
-                    tutorial: "https://www.tutorialspoint.com/css/css_tutorial.pdf",
-                    notes: "https://books.goalkicker.com/CSSBook/CSSNotesForProfessionals.pdf"
-                },
-                html: {
-                    tutorial: "https://www.tutorialspoint.com/html5/pdf/html5_tutorial.pdf",
-                    notes: "https://books.goalkicker.com/HTML5Book/HTML5NotesForProfessionals.pdf"
-                },
-                java: {
-                    tutorial: "https://www.tutorialspoint.com/java/java_tutorial.pdf",
-                    notes: "https://books.goalkicker.com/JavaBook/JavaNotesForProfessionals.pdf"
-                },
-                python: {
-                    tutorial: "https://www.tutorialspoint.com/python/python_tutorial.pdf",
-                    notes: "https://books.goalkicker.com/PythonBook/PythonNotesForProfessionals.pdf",
-                    ai: "https://github.com/kyu-software/AI-Resources/archive/main.zip"
-                }
-            };
-
-            return {
-                openTutorial: (lang) => window.open(resources[lang].tutorial, '_blank'),
-                openNotes: (lang) => window.open(resources[lang].notes, '_blank'),
-                openAI: () => window.open(resources.python.ai, '_blank')
-            };
-        }
-
         window.addEventListener('resize', () => {
             const canvas = document.getElementById('cyber-canvas');
             canvas.width = window.innerWidth;
@@ -488,3 +499,5 @@
     </script>
 </body>
 </html>
+           
+      
